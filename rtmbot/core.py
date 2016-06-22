@@ -7,6 +7,7 @@ import time
 import logging
 
 from slackclient import SlackClient
+from . import client
 
 sys.dont_write_bytecode = True
 
@@ -29,6 +30,7 @@ class RtmBot(object):
 
         # set slack token
         self.token = config.get('SLACK_TOKEN')
+        client.init(self.token)
 
         # set working directory for loading plugins or other files
         working_directory = os.path.dirname(sys.argv[0])
